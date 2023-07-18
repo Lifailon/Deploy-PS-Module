@@ -9,7 +9,7 @@ pipeline {
     stage('get-process') {
       steps {
         sh 'pwsh -command write-host Start'
-		sh 'pwsh get-process.ps1'
+		sh 'pwsh pipe-win-service-man/get-process.ps1'
       }
     }
   }
