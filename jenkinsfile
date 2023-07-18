@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('version') {
       steps {
-        sh 'pwsh --version'
+        cmd 'pwsh --version'
       }
     }
     stage('hello') {
       steps {
-        sh 'pwsh -command get-service'
+        cmd 'pwsh -command get-service'
       }
     }
   }
