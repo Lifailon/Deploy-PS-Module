@@ -8,13 +8,13 @@ pipeline {
     }
     stage('Drive Size') {
       steps {
-        sh 'df -h | grep sda'
+        sh 'df -h | grep /dev/mapper'
         sh 'pwsh -command "Get-PSDrive | where name -match /"'
       }
     }
-    stage('Get Process') {
+    stage('Process') {
       steps {
-        sh 'pwsh pipe-win-service-man/get-process.ps1'
+        sh 'pwsh test/get-process-ssh.ps1'
       }
     }
   }
