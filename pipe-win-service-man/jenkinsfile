@@ -1,15 +1,20 @@
 pipeline {
   agent any
   stages {
-    stage('version') {
+    stage('PowerShell Version') {
       steps {
         sh 'pwsh --version'
       }
     }
-    stage('get-process') {
+    stage('Drive Size') {
       steps {
-        sh 'pwsh -command write-host Start'
-		sh 'pwsh pipe-win-service-man/get-process.ps1'
+        sh 'df -h | grep sda'
+        sh 'pwsh -command "Get-PSDrive | where name -match /"'
+      }
+    }
+    stage('Get Process') {
+      steps {
+        sh 'pwsh pipe-win-service-man/get-process.ps1'
       }
     }
   }
