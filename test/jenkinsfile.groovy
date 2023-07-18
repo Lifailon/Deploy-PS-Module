@@ -12,7 +12,7 @@ pipeline {
         sh 'pwsh -command "Get-PSDrive | where name -match /"'
       }
     }
-    stage('Process') {
+    stage('Process SSH') {
       steps {
         sh 'pwsh test/get-process-ssh.ps1'
       }
