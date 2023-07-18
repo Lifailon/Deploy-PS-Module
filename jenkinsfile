@@ -8,7 +8,7 @@ pipeline {
     }
     stage('hello') {
       steps {
-        pwsh -command get-service
+        sh 'pwsh -command get-service'
       }
     }
   }
