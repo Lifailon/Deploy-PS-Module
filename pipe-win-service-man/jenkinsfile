@@ -6,9 +6,10 @@ pipeline {
         sh 'pwsh --version'
       }
     }
-    stage('hello') {
+    stage('get-process') {
       steps {
-        sh 'pwsh -command get-process'
+        sh 'pwsh -command write-host Start'
+		sh 'pwsh get-process.ps1'
       }
     }
   }
