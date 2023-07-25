@@ -6,6 +6,7 @@ pipeline {
   stages {
     stage('Before Deploy Version') {
       steps {
+        echo "$params.Version"
         sh 'ansible-playbook Pipeline/Get-Version.yml'
       }
     }
