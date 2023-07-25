@@ -14,7 +14,7 @@ pipeline {
     }
     stage('Process SSH') {
       steps {
-        sh 'pwsh test/get-process-ssh.ps1'
+        sh 'ansible-playbook test/Get-PowerShell.yml'
       }
     }
   }
