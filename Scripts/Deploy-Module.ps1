@@ -2,7 +2,6 @@ $Module_Path = "C:\Program Files\PowerShell\7\Modules"
 $Name_Module = "pSyslog"
 $Temp_Path = "$env:TEMP\$Name_Module.tar.gz"
 $GitHub_Rep = "https://api.github.com/repos/Lifailon/pSyslog/tarball"
-Get-ChildItem $Module_Path\$Name_Module
 
 Invoke-WebRequest -URI $GitHub_Rep -outfile $Temp_Path # download
 Set-Location $env:TEMP
