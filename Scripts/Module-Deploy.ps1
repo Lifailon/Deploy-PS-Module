@@ -10,5 +10,3 @@ Remove-Item "$Module_Path\$Name_Module" -Recurse -Force
 Copy-Item -Path "$Path_Arch\Module\pSyslog" -Destination "$Module_Path\" -Recurse
 Remove-Item $Temp_Path
 Remove-Item $Path_Arch -Recurse
-Import-Module pSyslog
-Get-Module pSyslog | select Version

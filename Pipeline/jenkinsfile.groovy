@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Check Version') {
+    stage('Before Check Version') {
       steps {
         sh 'ansible-playbook Pipeline/Module-Version.yml'
       }
@@ -9,6 +9,11 @@ pipeline {
     stage('Deploy Module') {
       steps {
         sh 'ansible-playbook Pipeline/Module-Deploy.yml'
+      }
+    }
+    stage('After Deploy Module') {
+      steps {
+        sh 'ansible-playbook Pipeline/Module-Version.yml'
       }
     }
   }
