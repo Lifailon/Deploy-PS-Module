@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+    string(name: "Version", defaultValue: "0.7", trim: true, description: "Выбрать версию модуля")
+  }
   stages {
     stage('Before Deploy Version') {
       steps {
