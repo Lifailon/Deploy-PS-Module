@@ -1,0 +1,14 @@
+- name: win_powershell_exec
+  hosts: ws
+  tasks:
+    - name: Run PowerShell Commands
+      win_shell: |
+        Import-Module pSyslog
+        $Version = [string](Get-Module pSyslog | select Version) -replace "@{Version=|}"
+        $tag  = (irm "https://api.github.com/repos/Lifailon/pSyslog/releases/latest").tag_name
+        $hashtable = @{"Local" = "$Version"; "GitHub" = "$tag"}
+        $hashtable
+      register: command_output
+    - name: Command Output
+      debug:
+        var: command_output.stdout_lines
