@@ -3,5 +3,5 @@
   tasks:
     - name: Copy file to win hosts
       win_copy:
-        src: test/Module-Deploy.ps1
+        src: /home/lifailon/Module-Deploy.ps1
         dest: C:\Users\Lifailon\Desktop\Module-Deploy.ps1
