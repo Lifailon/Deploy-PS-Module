@@ -1,7 +1,10 @@
 - name: win_powershell
   hosts: ws
   tasks:
-    - name: Copy file to win hosts
-      win_copy:
-        src: /home/lifailon/Module-Deploy.ps1
-        dest: C:\Users\Lifailon\Desktop\Module-Deploy.ps1
+    - name: Run PowerShell Commands
+      win_shell: |
+        Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/pipeline-powershell/rsa/test/Module-Deploy.ps1")
+      register: command_output
+    - name: Command Output
+      debug:
+        var: command_output.stdout_lines
