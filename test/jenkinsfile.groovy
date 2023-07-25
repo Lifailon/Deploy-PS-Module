@@ -6,7 +6,7 @@ pipeline {
         sh 'ansible-playbook test/Module-Version.yml'
       }
     }
-    stage('Copy') {
+    stage('Deploy Module') {
       steps {
         sh 'ansible-playbook test/Module-Deploy.yml'
       }
