@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Check Local Version') {
+    stage('Check Version') {
       steps {
         sh 'ansible-playbook test/Get-Module-Version.yml'
       }
