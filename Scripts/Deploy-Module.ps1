@@ -6,9 +6,6 @@ Set-Location $env:TEMP
 tar -xzf $Temp_Path # extract gzip
 $Path_Arch = (Get-ChildItem *$Name_Module* -Directory).FullName
 $Module_Path = "C:\Program Files\PowerShell\Modules"
-if (Test-Path $Module_Path -eq $false) {
-    New-Item -Path $Module_Path -ItemType Directory
-}
 Remove-Item "$Module_Path\$Name_Module" -Recurse -Force
 Copy-Item -Path "$Path_Arch\Module\pSyslog" -Destination "$Module_Path\" -Recurse
 Remove-Item $Temp_Path

@@ -5,9 +5,9 @@
       win_shell: |
         pwsh
         Import-Module pSyslog
-        $Version = [string](Get-Module pSyslog | select Version) -replace "@{Version=|}"
+        $version = [string](Get-Module pSyslog | select Version) -replace "@{Version=|}"
         $tag  = (irm "https://api.github.com/repos/Lifailon/pSyslog/releases/latest").tag_name
-        $hashtable = @{"Local" = "$Version"; "GitHub" = "$tag"}
+        $hashtable = @{"Local" = "$version"; "GitHub" = "$tag"}
         $hashtable
       register: command_output
     - name: Command Output

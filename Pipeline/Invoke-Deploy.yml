@@ -3,7 +3,7 @@
   tasks:
     - name: Run PowerShell Commands
       win_shell: |
-        Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Deploy-PS-Module/rsa/Scripts/Module-Deploy.ps1")
+        Invoke-Expression(New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/Lifailon/Deploy-PS-Module/rsa/Scripts/Deploy-Module.ps1")
       register: command_output
     - name: Command Output
       debug:
