@@ -6,5 +6,15 @@ pipeline {
         sh 'ansible-playbook Pipeline/Module-Version.yml'
       }
     }
+    stage('Deploy Module') {
+      steps {
+        sh 'ansible-playbook Pipeline/Module-Deploy.yml'
+      }
+    }
+    stage('After Deploy Module') {
+      steps {
+        sh 'ansible-playbook Pipeline/Module-Version.yml'
+      }
+    }
   }
 }

@@ -5,7 +5,7 @@ Invoke-WebRequest -URI $GitHub_Rep -outfile $Temp_Path # download
 Set-Location $env:TEMP
 tar -xzf $Temp_Path # extract gzip
 $Path_Arch = (Get-ChildItem *$Name_Module* -Directory).FullName
-$Module_Path = "C:\Program Files\PowerShell\7\Modules"
+$Module_Path = "C:\Program Files\PowerShell\Modules"
 Remove-Item "$Module_Path\$Name_Module" -Recurse -Force
 Copy-Item -Path "$Path_Arch\Module\pSyslog" -Destination "$Module_Path\" -Recurse
 Remove-Item $Temp_Path
