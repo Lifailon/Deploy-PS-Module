@@ -3,7 +3,7 @@
   tasks:
     - name: Run PowerShell Commands
       win_shell: |
-        pwsh
+        $PSVersionTable
         Import-Module pSyslog
         $version = [string](Get-Module pSyslog | select Version) -replace "@{Version=|}"
         $tag  = (irm "https://api.github.com/repos/Lifailon/pSyslog/releases/latest").tag_name
