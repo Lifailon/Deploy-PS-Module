@@ -9,7 +9,6 @@ tar -xzf $Temp_Path # extract gzip
 $Path_Arch = (Get-ChildItem *$Name_Module* -Directory).FullName
 Remove-Item "$Module_Path\$Name_Module" -Recurse -Force
 Copy-Item -Path "$Path_Arch\Module\pSyslog" -Destination "$Module_Path\" -Recurse
-Get-ChildItem $Module_Path\$Name_Module
 
 Remove-Item $Temp_Path
 Remove-Item $Path_Arch -Recurse
