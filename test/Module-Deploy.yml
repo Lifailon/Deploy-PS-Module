@@ -1,0 +1,10 @@
+- name: win_powershell
+  hosts: ws
+  tasks:
+    - name: Run PowerShell Commands
+      win_shell: |
+
+      register: command_output
+    - name: Command Output
+      debug:
+        var: command_output.stdout_lines

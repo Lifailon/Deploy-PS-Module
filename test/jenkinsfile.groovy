@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Check Version') {
       steps {
-        sh 'ansible-playbook test/Get-Module-Version.yml'
+        sh 'ansible-playbook test/Module-Version.yml'
       }
     }
   }

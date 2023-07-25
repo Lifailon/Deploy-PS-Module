@@ -1,4 +1,4 @@
-- name: win_powershell_exec
+- name: win_powershell
   hosts: ws
   tasks:
     - name: Run PowerShell Commands
