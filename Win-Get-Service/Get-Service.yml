@@ -1,0 +1,12 @@
+- name: win_powershell
+  vars:
+    Service_Name: winrm
+  hosts: ws
+  tasks:
+    - name: Run PowerShell Commands
+      win_shell: |
+        Get-Service *'{{$Service_Name}}'*
+      register: command_output
+    - name: Command Output
+      debug:
+        var: command_output.stdout_lines

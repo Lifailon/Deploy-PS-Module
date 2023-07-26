@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Deploy Module') {
       steps {
-        sh 'ansible-playbook Pipeline/Invoke-Deploy.yml'
+        sh 'ansible-playbook Pipeline/Invoke-Deploy.yml -M /root/.ansible/collections/ansible_collections/ansible/windows/plugins/modules'
       }
     }
     stage('After Deploy Version') {
