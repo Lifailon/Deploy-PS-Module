@@ -4,15 +4,15 @@ pipeline {
     string(name: "Version", defaultValue: "0.7", trim: true, description: "Выбрать версию модуля")
   }
   stages {
-    stage('Deploy Module') {
-      steps {
-        sh 'ansible-playbook Pipeline/Invoke-Deploy.yml -M /root/.ansible/collections/ansible_collections/ansible/windows/plugins/modules/win_powershell.py'
-      }
-    }
     stage('Before Deploy Version') {
       steps {
         echo "Выбрана версия: $params.Version"
         sh 'ansible-playbook Pipeline/Get-Version.yml'
+      }
+    }
+    stage('Deploy Module') {
+      steps {
+        sh 'ansible-playbook Pipeline/Invoke-Deploy.yml'
       }
     }
     stage('After Deploy Version') {
