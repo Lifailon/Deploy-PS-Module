@@ -1,7 +1,9 @@
 - hosts: ws
+  collections:
+  - ansible.windows
   tasks:
   - name: Run PowerShell script with parameters
-    community.windows.win_powershell:
+    ansible.windows.win_powershell:
       parameters:
         Module_Path: C:\Program Files\PowerShell\7\Modules
       script: |
