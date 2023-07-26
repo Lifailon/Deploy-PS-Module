@@ -1,7 +1,6 @@
 - hosts: ws
   collections:
   - ansible.windows
-  - community.windows
   tasks:
   - name: Run PowerShell script with parameters
     win_powershell:
