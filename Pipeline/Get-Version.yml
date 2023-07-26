@@ -1,8 +1,10 @@
 - name: win_powershell
+  collections:
+  - ansible.windows
   hosts: ws
   tasks:
     - name: Run PowerShell Commands
-      ansible.windows.win_shell: |
+      win_shell: |
         $version = pwsh -command 'Import-Module pSyslog; [string](Get-Module pSyslog | select Version)'
         $version = $version -replace "@{Version=|}"
         $tag  = (irm "https://api.github.com/repos/Lifailon/pSyslog/releases/latest").tag_name
