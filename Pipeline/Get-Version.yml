@@ -1,4 +1,6 @@
 - name: win_powershell
+  collections:
+  - ansible.windows
   hosts: ws
   tasks:
     - name: Run PowerShell Commands
