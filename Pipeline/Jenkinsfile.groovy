@@ -1,7 +1,10 @@
 pipeline {
   agent any
   parameters {
-    string(name: "ServiceName", defaultValue: "WinRM", trim: true, description: "Enter the name of the service") // creat parameter
+    // creat parameters
+    string(name: "ServiceName", defaultValue: "WinRM", trim: true, description: "Enter the name of the service")
+    booleanParam(name: "Change", defaultValue: false, description: "Change state")
+    choice(name: "State", choices: ["Restart", "Start", "Stop"], description: "Select state")
   }
   stages {
     stage('Before Deploy Version') {
