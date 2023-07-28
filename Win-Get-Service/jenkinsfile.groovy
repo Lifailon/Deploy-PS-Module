@@ -6,8 +6,7 @@ pipeline {
   stages {
     stage('Before Deploy Version') {
       steps {
-        echo "Выбрана версия: $params.Version"
-        sh 'ansible-playbook Win-Get-Service/Get-Service.yml'
+        echo "Искомая служба: $params.Service_Name"
       }
     }
   }
