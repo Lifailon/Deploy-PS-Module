@@ -4,7 +4,7 @@ pipeline {
     // creat parameters
     string(name: "ServiceName", defaultValue: "ssh", trim: true, description: "Enter the name of the service")
     booleanParam(name: "ChangeState", defaultValue: false)
-    choice(name: "State", choices: ["Restart", "Start", "Stop"], defaultValue: "Stop", description: "Select state")
+    choice(name: "State", choices: ["Stop","Restart","Start"], description: "Select state")
   }
   stages {
     stage('Before Deploy Version') {
