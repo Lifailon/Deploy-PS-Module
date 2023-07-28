@@ -8,11 +8,11 @@
       win_shell: |
         Get-Service *"{{ServiceName}}"*
         if ("{{State -match 'Start'}}") {
-          Get-Service *"{{ServiceName}}"* | Start-Service
+          Start-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
         elseif ("{{State -match 'Stop'}}") {
-          Get-Service *"{{ServiceName}}"* | Stop-Service
+          Stop-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
       register: command_output
