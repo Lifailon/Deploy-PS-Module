@@ -1,6 +1,6 @@
 - name: win_powershell
   vars:
-    ServiceName: winrm
+    ServiceName: WinRM
   hosts: ws
   tasks:
     - name: Run PowerShell Commands
