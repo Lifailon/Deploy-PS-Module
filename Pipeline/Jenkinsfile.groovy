@@ -7,7 +7,7 @@ pipeline {
     stage('Before Deploy Version') {
       steps {
         echo "Name of the selected service: $params.ServiceName"
-        sh "ansible-playbook Win-Get-Service/Get-Service.yml -e ServiceName=$params.ServiceName" // pass parameter to the playbook variable
+        sh "ansible-playbook Pipeline/Get-Service.yml -e ServiceName=$params.ServiceName" // pass parameter to the playbook variable
       }
     }
   }
