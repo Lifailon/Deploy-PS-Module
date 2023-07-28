@@ -4,7 +4,7 @@
   hosts: ws
   tasks:
     - name: Run PowerShell Commands
-      win_shell: |
+      ansible.windows.win_shell: |
         Get-Service *"{{Service_Name}}"*
       register: command_output
     - name: Command Output
