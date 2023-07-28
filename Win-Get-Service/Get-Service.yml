@@ -9,4 +9,4 @@
       register: command_output
     - name: Command Output
       debug:
-        var: command_output
+        var: command_output.stdout_lines
