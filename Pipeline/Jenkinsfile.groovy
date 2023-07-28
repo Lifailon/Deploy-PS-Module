@@ -3,7 +3,7 @@ pipeline {
   parameters {
     // creat parameters
     string(name: "ServiceName", defaultValue: "WinRM", trim: true, description: "Enter the name of the service")
-    booleanParam(name: "Change", defaultValue: false, description: "Change state")
+    booleanParam(name: "ChangeState", defaultValue: false)
     choice(name: "State", choices: ["Restart", "Start", "Stop"], description: "Select state")
   }
   stages {
