@@ -1,13 +1,13 @@
 pipeline {
   agent any
   parameters {
-    string(name: "Service_Name", defaultValue: "WinRM", trim: true, description: "Service name")
+    string(name: "ServiceName", defaultValue: "WinRM", trim: true, description: "Введите имя службы")
   }
   stages {
     stage('Before Deploy Version') {
       steps {
-        echo "Имя выбранной службы: $params.Service_Name"
-        sh "ansible-playbook Win-Get-Service/Get-Service.yml -e ServiceName=$params.Service_Name"
+        echo "Имя выбранной службы: $params.ServiceName"
+        sh "ansible-playbook Win-Get-Service/Get-Service.yml -e ServiceName=$params.ServiceName"
       }
     }
   }
