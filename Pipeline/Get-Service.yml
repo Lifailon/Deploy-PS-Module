@@ -7,11 +7,12 @@
     - name: Run PowerShell Commands
       win_shell: |
         Get-Service *"{{ServiceName}}"*
-        if ("{{State -match 'Start'}}") {
+        echo ""
+        if ("{{State}}" -match "Start") {
           Start-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
-        elseif ("{{State -match 'Stop'}}") {
+        if ("{{State}}" -match "Stop") {
           Stop-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
