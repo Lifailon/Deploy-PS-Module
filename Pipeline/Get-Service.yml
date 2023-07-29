@@ -4,10 +4,15 @@
     State: None
   hosts: ws
   tasks:
-    - name: Run PowerShell Commands
+    - name: Get service state
       win_shell: |
         Get-Service *"{{ServiceName}}"*
-        echo ""
+      register: command_output
+    - name: Output
+      debug:
+        var: command_output.stdout_lines
+    - name: Change service state
+      win_shell: |
         if ("{{State}}" -like "Start") {
           Start-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
@@ -21,6 +26,6 @@
           Get-Service *"{{ServiceName}}"*
         }
       register: command_output
-    - name: Command Output
+    - name: Output
       debug:
         var: command_output.stdout_lines
