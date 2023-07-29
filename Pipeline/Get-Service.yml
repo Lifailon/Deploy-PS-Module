@@ -1,18 +1,22 @@
 - name: win_powershell
   vars:
     ServiceName: WinRM
-    State: false
+    State: None
   hosts: ws
   tasks:
     - name: Run PowerShell Commands
       win_shell: |
         Get-Service *"{{ServiceName}}"*
         echo ""
-        if ("{{State}}" -match "Start") {
+        if ("{{State}}" -like "Start") {
           Start-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
-        if ("{{State}}" -match "Stop") {
+        if ("{{State}}" -like "Restart") {
+          Restart-Service *"{{ServiceName}}"*
+          Get-Service *"{{ServiceName}}"*
+        }
+        if ("{{State}}" -like "Stop") {
           Stop-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
