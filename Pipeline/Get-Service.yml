@@ -21,9 +21,12 @@
           Restart-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
-        if ("{{State}}" -like "Stop") {
+        elseif ("{{State}}" -like "Stop") {
           Stop-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
+        }
+        else {
+          Write-Host "No change in state"
         }
       register: command_output
     - name: Output
