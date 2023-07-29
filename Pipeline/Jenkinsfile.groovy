@@ -7,7 +7,7 @@ pipeline {
     choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "Select state")
   }
   stages {
-    stage('State service') {
+    stage('Ansible and PowerShell') {
       steps {
         echo "Name of the selected service: $params.ServiceName"
         // pass parameters to the input of ansible variables
