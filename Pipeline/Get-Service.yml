@@ -16,7 +16,8 @@
           Write-Host "PowerShell 7: False"
         }
         Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
-        pwsh -c 'Get-Service *"{{ServiceName}}"* | select ServiceName,Status,StartType,StartupType,DisplayName,BinaryPathName,Description'
+        $t = pwsh -c '(Get-Service *"{{ServiceName}}"*).BinaryPathName'
+        $t
       register: command_output
     - name: Output
       debug:
