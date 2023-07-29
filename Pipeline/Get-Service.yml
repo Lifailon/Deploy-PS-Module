@@ -22,6 +22,11 @@
         var: command_output.stdout_lines
     - name: Change service state
       win_shell: |
+        if ("{{StartType}}" -notmatch "None") {
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartupType "{{StartType}}"
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartMode "{{StartType}}"
+        }
         if ("{{State}}" -match "Start") {
           Get-Service *"{{ServiceName}}"* | Start-Service
         }
@@ -33,11 +38,6 @@
         }
         else {
           Write-Host "No change in state"
-        }
-        if ("{{StartType}}" -notmatch "None") {
-          Get-Service *"{{ServiceName}}"* | Set-Service -StartupType "{{StartType}}"
-          Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
-          Get-Service *"{{ServiceName}}"* | Set-Service -StartMode "{{StartType}}"
         }
         if ( ("{{State}}" -notmatch "None") -or ("{{StartType}}" -notmatch "None") ) {    
           Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
