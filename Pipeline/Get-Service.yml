@@ -6,7 +6,7 @@
   tasks:
     - name: Get service state
       win_shell: |
-        Get-Service *"{{ServiceName}}"* | fl name,status
+        Get-Service *"{{ServiceName}}"* | Format-Table Status,ServiceName,DisplayName,StartType
       register: command_output
     - name: Output
       debug:
@@ -26,7 +26,7 @@
           Write-Host "No change in state"
         }
         if ("{{State}}" -match "Start|Restart|Stop") {    
-          Get-Service *"{{ServiceName}}"* | fl name,status
+          Get-Service *"{{ServiceName}}"* | Format-Table Status,ServiceName,DisplayName,StartType
         }
       register: command_output
     - name: Output
