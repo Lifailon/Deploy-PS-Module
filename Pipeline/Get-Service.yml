@@ -8,6 +8,8 @@
     - name: Get service state
       win_shell: |
         Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName # StartupType,BinaryPathName,Description
+        $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
+        (Get-ItemProperty -Path $RegPath).SemanticVersion
       register: command_output
     - name: Output
       debug:
