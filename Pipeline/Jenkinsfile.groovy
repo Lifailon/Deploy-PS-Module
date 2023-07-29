@@ -2,7 +2,7 @@ pipeline {
   agent any
   parameters {
     // creat parameters
-    string(name: "ServiceName", defaultValue: "ssh", trim: true, description: "Enter the name of the service")
+    string(name: "ServiceName", defaultValue: "sshd", trim: true, description: "Enter the name of the service")
     // booleanParam(name: "ChangeState", defaultValue: false)
     choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "Select state")
   }
