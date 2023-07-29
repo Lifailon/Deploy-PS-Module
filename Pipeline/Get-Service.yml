@@ -7,7 +7,7 @@
   tasks:
     - name: Get service state
       win_shell: |
-        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,Start*,DisplayName,BinaryPathName
+        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName # StartupType,BinaryPathName,Description
       register: command_output
     - name: Output
       debug:
@@ -32,7 +32,7 @@
           Get-Service *"{{ServiceName}}"* | Set-Service -StartMode "{{StartType}}"
         }
         if ( ("{{State}}" -notmatch "None") -or ("{{StartType}}" -notmatch "None") ) {    
-          Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,Start*,DisplayName
+          Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
         }
       register: command_output
     - name: Output
