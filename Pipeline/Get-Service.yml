@@ -17,7 +17,7 @@
           Start-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
-        if ("{{State}}" -like "Restart") {
+        elseif ("{{State}}" -like "Restart") {
           Restart-Service *"{{ServiceName}}"*
           Get-Service *"{{ServiceName}}"*
         }
