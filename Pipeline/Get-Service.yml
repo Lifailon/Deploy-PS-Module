@@ -28,9 +28,11 @@
         }
         if ("{{StartType}}" -notmatch "None") {
           Get-Service *"{{ServiceName}}"* | Set-Service -StartupType "{{StartType}}"
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartMode "{{StartType}}"
         }
         if ( ("{{State}}" -notmatch "None") -or ("{{StartType}}" -notmatch "None") ) {    
-          Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+          Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName
         }
       register: command_output
     - name: Output
