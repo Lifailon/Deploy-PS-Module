@@ -7,7 +7,7 @@
   tasks:
     - name: Get service state
       win_shell: |
-        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName
       register: command_output
     - name: Output
       debug:
