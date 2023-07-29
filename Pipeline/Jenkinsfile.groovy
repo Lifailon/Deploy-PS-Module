@@ -4,7 +4,7 @@ pipeline {
     // creat parameters
     string(name: "ServiceName", defaultValue: "sshd", trim: true, description: "Enter the name of the service")
     // booleanParam(name: "ChangeState", defaultValue: false)
-    choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "Select state \n None - Only get status")
+    choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "Select state \nNone - Only get status")
     choice(name: "StartType", choices: ["None","Automatic","AutomaticDelayedStart","Disabled","Manual"])
   }
   stages {
