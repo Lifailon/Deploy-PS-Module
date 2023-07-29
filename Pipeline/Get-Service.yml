@@ -17,10 +17,10 @@
           Get-Service *"{{ServiceName}}"* | Start-Service
         }
         elseif ("{{State}}" -match "Restart") {
-          Restart-Service *"{{ServiceName}}"*
+          Get-Service *"{{ServiceName}}"* | Restart-Service
         }
         elseif ("{{State}}" -match "Stop") {
-          Stop-Service *"{{ServiceName}}"*
+          Get-Service *"{{ServiceName}}"* | Stop-Service
         }
         else {
           Write-Host "No change in state"
