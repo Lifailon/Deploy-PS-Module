@@ -14,7 +14,7 @@
     - name: Change service state
       win_shell: |
         if ("{{State}}" -match "Start") {
-          Start-Service *"{{ServiceName}}"*
+          Get-Service *"{{ServiceName}}"* | Start-Service
         }
         elseif ("{{State}}" -match "Restart") {
           Restart-Service *"{{ServiceName}}"*
