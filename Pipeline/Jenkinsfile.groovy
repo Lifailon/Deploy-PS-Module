@@ -12,7 +12,7 @@ pipeline {
       steps {
         echo "Name of the selected service: $params.ServiceName"
         // pass parameters to the input of ansible variables
-        sh "ansible-playbook Pipeline/Get-Service.yml -e 'ServiceName=$params.ServiceName State=$params.State'"
+        sh "ansible-playbook Pipeline/Get-Service.yml -e 'ServiceName=$params.ServiceName State=$params.State StartType=$params.StartType'"
       }
     }
   }

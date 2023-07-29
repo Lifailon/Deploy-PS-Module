@@ -2,6 +2,7 @@
   vars:
     ServiceName: WinRM
     State: None
+    StartType: None
   hosts: ws
   tasks:
     - name: Get service state
@@ -25,7 +26,10 @@
         else {
           Write-Host "No change in state"
         }
-        if ("{{State}}" -match "Start|Restart|Stop") {    
+        if ("{{StartType}}" -notmatch "None") {
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartupType "{{StartType}}"
+        }
+        if ( ("{{State}}" -notmatch "None") -or ("{{StartType}}" -notmatch "None") ) {    
           Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
         }
       register: command_output
