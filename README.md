@@ -4,7 +4,7 @@ Jenkins pipeline for service manager
 
 **Stack:** Jenkins, Ansible, PowerShell/Bash
 
-```
+```mermaid
 flow
 st=>start: Start
 e=>end: End
