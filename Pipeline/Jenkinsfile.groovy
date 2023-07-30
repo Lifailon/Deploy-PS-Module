@@ -17,5 +17,13 @@ pipeline {
         sh "ansible-playbook Pipeline/Get-Service.yml -e 'ServiceName=$params.ServiceName State=$params.State StartType=$params.StartType'"
       }
     }
+    stage('Systemctl via Ansible') {
+      when {
+        expression { params.System == 'Linux' }
+      }
+      steps {
+        echo "Linux"
+      }
+    }
   }
 }
