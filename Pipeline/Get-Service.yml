@@ -20,6 +20,9 @@
           Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
           # pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName,BinaryPathName'
         }
+        else {
+          Write-Host "Linux operating system selected"
+        }
       register: command_output
     - name: Output
       debug:
