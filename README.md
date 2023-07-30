@@ -6,7 +6,7 @@ Jenkins pipeline for service manager
 
 ```mermaid
 stateDiagram-v2
-    Jenkins: param --> Git: Code
+    Jenkins --> Git: Code
     Git --> Ansible
     Ansible --> Git
 ```
