@@ -23,13 +23,11 @@
         var: command_output.stdout_lines
     - name: Change service state
       win_shell: |
-        if ("{{StartType}}" -notmatch "None") {
-          if ("{{StartType}}" -like "AutomaticDelayedStart") {
-            pwsh -c 'Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"'            
-          }
-          elseif ("{{StartType}}" -match "Automatic|Disabled|Manual") {
-            Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
-          }
+        if ("{{StartType}}" -match "Automatic|Disabled|Manual") {
+          Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
+        }
+        if ("{{StartType}}" -like "AutomaticDelayedStart") {
+          pwsh -c 'Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"'            
         }
         if ("{{State}}" -match "Start") {
           Get-Service *"{{ServiceName}}"* | Start-Service
