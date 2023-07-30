@@ -6,10 +6,9 @@ Jenkins pipeline for service manager
 
 ```mermaid
 stateDiagram-v2
-    Still --> [*]
-    Still --> Moving
-    Moving --> Still
-    Moving --> Crash
+    Jenkins --> Git
+    Git --> Ansible Playbook
+    Ansible Playbook --> Git
 ```
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
