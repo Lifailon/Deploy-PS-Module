@@ -1,22 +1,25 @@
 - name: win_powershell
   vars:
     ServiceName: WinRM
+    System: Windows
     State: None
     StartType: None
   hosts: ws
   tasks:
     - name: Get service state
       win_shell: |
-        $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
-        $PS7Ver = (Get-ItemProperty -Path $RegPath -ErrorAction Ignore).SemanticVersion
-        if ($PS7Ver -ne $null) {
-          Write-Host "PowerShell 7: True (version: $PS7Ver)"
+        if ($System -eq "Windows") {
+          $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
+          $PS7Ver = (Get-ItemProperty -Path $RegPath -ErrorAction Ignore).SemanticVersion
+          if ($PS7Ver -ne $null) {
+            Write-Host "PowerShell 7: True (version: $PS7Ver)"
+          }
+          else {
+            Write-Host "PowerShell 7: False"
+          }
+          Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+          # pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName,BinaryPathName'
         }
-        else {
-          Write-Host "PowerShell 7: False"
-        }
-        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
-        # pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName,BinaryPathName'
       register: command_output
     - name: Output
       debug:
