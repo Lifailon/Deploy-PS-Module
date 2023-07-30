@@ -1,6 +1,6 @@
 - name: win_powershell
   vars:
-    ServiceName: WinRM
+    ServiceName: ssh
     State: None
     StartType: None
   hosts: ws

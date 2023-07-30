@@ -1,6 +1,6 @@
 - name: win_powershell
   vars:
-    ServiceName: cron
+    ServiceName: ssh
     State: None
     StartType: None
   hosts: us
