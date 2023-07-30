@@ -1,6 +1,6 @@
 - name: win_powershell
   vars:
-    ServiceName: WinRM
+    ServiceName: cron
     State: None
     StartType: None
   hosts: us
