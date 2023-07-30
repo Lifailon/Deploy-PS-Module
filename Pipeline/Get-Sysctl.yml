@@ -1,0 +1,16 @@
+- name: win_powershell
+  vars:
+    ServiceName: WinRM
+    State: None
+    StartType: None
+    System: Linux
+  hosts: us
+  tasks:
+    - name: Change service state Linux
+      shell:
+        echo "test"
+        echo "test2"
+      register: command_output
+    - name: Output
+      debug:
+        var: command_output.stdout_lines

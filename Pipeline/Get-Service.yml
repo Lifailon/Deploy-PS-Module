@@ -8,21 +8,16 @@
   tasks:
     - name: Get-Service
       win_shell: |
-        if ("{{System}}" -eq "Windows") {
-          $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
-          $PS7Ver = (Get-ItemProperty -Path $RegPath -ErrorAction Ignore).SemanticVersion
-          if ($PS7Ver -ne $null) {
-            Write-Host "PowerShell 7: True (version: $PS7Ver)"
-          }
-          else {
-            Write-Host "PowerShell 7: False"
-          }
-          Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
-          # pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName,BinaryPathName'
+        $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
+        $PS7Ver = (Get-ItemProperty -Path $RegPath -ErrorAction Ignore).SemanticVersion
+        if ($PS7Ver -ne $null) {
+          Write-Host "PowerShell 7: True (version: $PS7Ver)"
         }
         else {
-          Write-Host "Linux operating system selected"
+          Write-Host "PowerShell 7: False"
         }
+        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+        # pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName,BinaryPathName'
       register: command_output
     - name: Output
       debug:
@@ -51,14 +46,6 @@
         if ( ("{{State}}" -notmatch "None") -or ("{{StartType}}" -notmatch "None") ) {    
           Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
         }
-      register: command_output
-    - name: Output
-      debug:
-        var: command_output.stdout_lines
-    - name: Change service state Linux
-      shell:
-        echo "test"
-        echo "test2"
       register: command_output
     - name: Output
       debug:
