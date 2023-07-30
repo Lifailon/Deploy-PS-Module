@@ -6,9 +6,9 @@ Jenkins pipeline for service manager
 
 ```mermaid
 stateDiagram-v2
-    Jenkins --> CSM/GitHub: Jenkins.Groovy
-    CSM/GitHub --> Ansible: Playbook
-    Ansible --> PowerShell: Module
+    Jenkins --> Jenkins.Groovy: CSM/GitHub
+    Jenkins.Groovy --> Playbook: Ansible
+    Playbook --> PowerShell: Module win_shell
     PowerShell --> Jenkins: Output
 ```
 
