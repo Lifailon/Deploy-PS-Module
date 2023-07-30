@@ -2,13 +2,14 @@
 
 Jenkins pipeline for service manager
 
-**Stack:** Jenkins, Ansible, PowerShell/Bash
+**Stack:** Jenkins, Git, Ansible, PowerShell/Bash
 
 ```mermaid
 stateDiagram-v2
     Jenkins --> Git: Code
     Git --> Ansible: Playbook
     Ansible --> PowerShell: Module
+    PowerShell --> Jenkins: Output
 ```
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
