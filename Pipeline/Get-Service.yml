@@ -27,7 +27,7 @@
           if ("{{StartType}}" -like "AutomaticDelayedStart") {
             pwsh -c 'Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"'            
           }
-          else {
+          elseif ("{{StartType}}" -match "Automatic|Disabled|Manual") {
             Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
           }
         }
