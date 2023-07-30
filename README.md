@@ -5,12 +5,8 @@ Jenkins pipeline for service manager
 **Stack:** Jenkins, Ansible, PowerShell/Bash
 
 ```mermaid
-tag=>type: content:>url
-st=>start: Start
-e=>end: End
-op1=>operation: My Operation
-sub1=>subroutine: My Subroutine
-cond=>condition: Yes or No?
+Jenkins --> Git
+Git --> Ansible Playbook
 ```
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
