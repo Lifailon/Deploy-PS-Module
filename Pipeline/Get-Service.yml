@@ -3,7 +3,6 @@
     ServiceName: WinRM
     State: None
     StartType: None
-    System: Windows
   hosts: ws
   tasks:
     - name: Get-Service

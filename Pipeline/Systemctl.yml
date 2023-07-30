@@ -3,12 +3,11 @@
     ServiceName: WinRM
     State: None
     StartType: None
-    System: Linux
   hosts: us
   tasks:
     - name: Change service state Linux
       shell:
-        systemctl status cron
+        systemctl status *"{{ServiceName}}"* | grep -iP "Active:| - "
       register: command_output
     - name: Output
       debug:
