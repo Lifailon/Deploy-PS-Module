@@ -9,14 +9,12 @@ pipeline {
   }
   stages {
     stage('PowerShell via Ansible') {
+      when {
+        expression { params.System == 'Windows' }
+      }
       steps {
         echo "Name of the selected service: $params.ServiceName"
-        if ($params.System = "Windows") {
-          sh "ansible-playbook Pipeline/Get-Service.yml -e 'ServiceName=$params.ServiceName State=$params.State StartType=$params.StartType'"
-        }
-        else {
-          echo "Linux"
-        }
+        sh "ansible-playbook Pipeline/Get-Service.yml -e 'ServiceName=$params.ServiceName State=$params.State StartType=$params.StartType'"
       }
     }
   }
