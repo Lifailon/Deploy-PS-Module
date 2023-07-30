@@ -8,8 +8,7 @@
   tasks:
     - name: Change service state Linux
       shell:
-        echo "test"
-        echo "test2"
+        systemctl status cron
       register: command_output
     - name: Output
       debug:

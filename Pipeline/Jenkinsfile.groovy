@@ -8,7 +8,7 @@ pipeline {
     choice(name: "System", choices: ["Windows","Linux"], description: "Select the operating system")
   }
   stages {
-    stage('PowerShell via Ansible') {
+    stage('Powershell via Ansible') {
       when {
         expression { params.System == 'Windows' }
       }
@@ -22,7 +22,8 @@ pipeline {
         expression { params.System == 'Linux' }
       }
       steps {
-        echo "Linux"
+        echo "Name of the selected service: $params.ServiceName"
+        sh "ansible-playbook Pipeline/Systemctl.yml"
       }
     }
   }
