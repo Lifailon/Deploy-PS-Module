@@ -2,7 +2,7 @@
 
 Jenkins pipeline for service management to Windows and Linux system.
 
-**Stack:** Jenkins, Git, Ansible, PowerShell/Bash
+**Stack:** Jenkins, SCM (GitHub), Ansible (tested v2.10.8) and module win_shell (from the collection ansible.windows), PowerShell/Bash.
 
 ```mermaid
 stateDiagram-v2
@@ -12,7 +12,7 @@ stateDiagram-v2
     PowerShell/Bash --> Jenkins: Output to Job
 ```
 
-### Work example:
+## Work example:
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/2-Build-with-Parameters.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/2-Build-with-Parameters.jpg" width="400"/></a>
