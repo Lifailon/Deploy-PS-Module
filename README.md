@@ -6,7 +6,7 @@ Jenkins pipeline for service management to Windows and Linux system.
 
 ```mermaid
 stateDiagram-v2
-    Jenkins --> Jenkins.Groovy: CSM/GitHub
+    Jenkins --> Jenkins.Groovy: GitHub
     Jenkins.Groovy --> Playbook: Ansible
     Playbook --> PowerShell/Bash: Module win_shell/shell
     PowerShell/Bash --> Jenkins: Output to Job
