@@ -9,7 +9,7 @@ stateDiagram-v2
     Jenkins --> Jenkins.Groovy: CSM/GitHub
     Jenkins.Groovy --> Playbook: Ansible
     Playbook --> PowerShell: Module win_shell
-    PowerShell --> Jenkins: Run commands /n and output to Job
+    PowerShell --> Jenkins: Output to Job
 ```
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
