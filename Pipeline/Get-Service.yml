@@ -1,14 +1,14 @@
 - name: win_powershell
   vars:
     ServiceName: WinRM
-    System: Windows
     State: None
     StartType: None
+    System: Windows
   hosts: ws
   tasks:
     - name: Get service state
       win_shell: |
-        if ($System -eq "Windows") {
+        if ("{{System}}" -eq "Windows") {
           $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
           $PS7Ver = (Get-ItemProperty -Path $RegPath -ErrorAction Ignore).SemanticVersion
           if ($PS7Ver -ne $null) {
