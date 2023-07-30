@@ -7,8 +7,8 @@ Jenkins pipeline for service manager
 ```mermaid
 stateDiagram-v2
     Jenkins --> Git: Code
-    Git --> Ansible
-    Ansible --> Git
+    Git --> Ansible: Playbook
+    Ansible --> PowerShell: Module
 ```
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
