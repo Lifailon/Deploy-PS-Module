@@ -6,7 +6,7 @@
     System: Windows
   hosts: ws
   tasks:
-    - name: Get service state
+    - name: Get-Service
       win_shell: |
         if ("{{System}}" -eq "Windows") {
           $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
@@ -27,7 +27,7 @@
     - name: Output
       debug:
         var: command_output.stdout_lines
-    - name: Change service state
+    - name: Change service state Windows
       win_shell: |
         if ("{{StartType}}" -match "Automatic|Disabled|Manual") {
           Get-Service *"{{ServiceName}}"* | Set-Service -StartMode "{{StartType}}"
@@ -51,6 +51,14 @@
         if ( ("{{State}}" -notmatch "None") -or ("{{StartType}}" -notmatch "None") ) {    
           Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
         }
+      register: command_output
+    - name: Output
+      debug:
+        var: command_output.stdout_lines
+    - name: Change service state Linux
+      shell:
+        echo "test"
+        echo "test2"
       register: command_output
     - name: Output
       debug:
