@@ -15,8 +15,8 @@
         else {
           Write-Host "PowerShell 7: False"
         }
-        #Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
-        pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName'
+        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+        # pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartupType,DisplayName,BinaryPathName'
       register: command_output
     - name: Output
       debug:
