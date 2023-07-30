@@ -15,7 +15,8 @@
         else {
           Write-Host "PowerShell 7: False"
         }
-        Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+        #Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName
+        pwsh -c 'Get-Service *"{{ServiceName}}"* | Format-Table ServiceName,Status,StartType,DisplayName'
       register: command_output
     - name: Output
       debug:
@@ -23,9 +24,12 @@
     - name: Change service state
       win_shell: |
         if ("{{StartType}}" -notmatch "None") {
-          Get-Service *"{{ServiceName}}"* | Set-Service -StartupType "{{StartType}}"
-          Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
-          Get-Service *"{{ServiceName}}"* | Set-Service -StartMode "{{StartType}}"
+          if ("{{StartType}}" -like "AutomaticDelayedStart") {
+            pwsh -c 'Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"'            
+          }
+          else {
+            Get-Service *"{{ServiceName}}"* | Set-Service -StartType "{{StartType}}"
+          }
         }
         if ("{{State}}" -match "Start") {
           Get-Service *"{{ServiceName}}"* | Start-Service

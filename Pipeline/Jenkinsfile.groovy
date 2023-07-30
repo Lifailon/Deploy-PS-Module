@@ -5,7 +5,7 @@ pipeline {
     string(name: "ServiceName", defaultValue: "sshd", trim: true, description: "Enter the name of the service")
     // booleanParam(name: "ChangeState", defaultValue: false)
     choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "None - only get status")
-    choice(name: "StartType", choices: ["None","Automatic","AutomaticDelayedStart","Disabled","Manual"])
+    choice(name: "StartType", choices: ["None","Automatic","AutomaticDelayedStart","Disabled","Manual"], description: "Delayed Start mode supported only PowerShell 7")
   }
   stages {
     stage('PowerShell via Ansible') {
