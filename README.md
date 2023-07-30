@@ -1,6 +1,6 @@
 ## Pipeline Service Manager
 
-Jenkins pipeline for service manager
+Jenkins pipeline for service management to Windows and Linux system.
 
 **Stack:** Jenkins, Git, Ansible, PowerShell/Bash
 
