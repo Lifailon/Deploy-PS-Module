@@ -7,7 +7,7 @@
   tasks:
     - name: Change service state Linux
       shell:
-        systemctl status *"{{ServiceName}}"* | grep -iP "Active:| - "
+        systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output
       debug:
