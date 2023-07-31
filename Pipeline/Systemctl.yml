@@ -7,7 +7,7 @@
   tasks:
     - name: Change service state Linux
       shell:
-        systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
         if [[ "{{State}}" -eq "Start" ]]
         then systemctl start *"{{ServiceName}}"
         elif [[ "{{State}}" -eq "Stop" ]]
