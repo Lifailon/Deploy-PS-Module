@@ -5,14 +5,14 @@
     StartType: None
   hosts: us
   tasks:
-    - name: Get service state
+    - name: Get service state Linux
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
       register: command_output
     - name: Output Status
       debug:
         var: command_output.stdout_lines
-    - name: Change service state Linux
+    - name: Start service
       when: State == "Start"
       shell: |
         systemctl start *"{{ServiceName}}"*;
@@ -21,7 +21,7 @@
     - name: Output Start
       debug:
         var: command_output.stdout_lines
-    - name: Change service state Linux
+    - name: Stop service
       when: State == "Stop"
       shell: |
         systemctl stop *"{{ServiceName}}"*;
@@ -30,7 +30,7 @@
     - name: Output Stop
       debug:
         var: command_output.stdout_lines
-    - name: Change service state Linux
+    - name: Restart service
       when: State == "Restart"
       shell: |
         systemctl restart *"{{ServiceName}}"*;

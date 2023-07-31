@@ -5,7 +5,7 @@
     StartType: None
   hosts: ws
   tasks:
-    - name: Get service state
+    - name: Get service state Windows
       win_shell: |
         $RegPath = "HKLM:\SOFTWARE\Microsoft\PowerShellCore\InstalledVersions\*"
         $PS7Ver = (Get-ItemProperty -Path $RegPath -ErrorAction Ignore).SemanticVersion
