@@ -5,7 +5,7 @@ pipeline {
     choice(name: "System", choices: ["Windows","Linux"], description: "Select the operating system")
     // booleanParam(name: "ChangeState", defaultValue: false)
     choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "None - only get status")
-    choice(name: "StartType", choices: ["None","Enabled","Manual","Automatic","AutomaticDelayedStart","Disabled"], description: "Enabled mode - for system Linux (not supported wildcard format). Automatic/Manual mode - for system Windows (Delayed Start mode - supported only PowerShell 7)"
+    choice(name: "StartType", choices: ["None","Enabled","Manual","Automatic","AutomaticDelayedStart","Disabled"], description: "Enabled mode - for system Linux (not supported wildcard format). Automatic/Manual mode - for system Windows (Delayed Start mode - supported only PowerShell 7)")
   }
   stages {
     stage('Powershell via Ansible') {
