@@ -9,7 +9,7 @@
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
       register: command_output
-    - name: Output Status
+    - name: Output state
       debug:
         var: command_output.stdout_lines
     - name: Start service
@@ -18,7 +18,7 @@
         systemctl start -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output Start
+    - name: Output start service
       debug:
         var: command_output.stdout_lines
     - name: Stop service
@@ -27,7 +27,7 @@
         systemctl stop -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output Stop
+    - name: Output stop service
       debug:
         var: command_output.stdout_lines
     - name: Restart service
@@ -36,7 +36,7 @@
         systemctl restart -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output Restart
+    - name: Output restart service
       debug:
         var: command_output.stdout_lines
     - name: Enable service to startup
@@ -45,15 +45,15 @@
         systemctl enable -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output Ensable
+    - name: Output ensable service
       debug:
         var: command_output.stdout_lines
     - name: Disable service to startup
-      when: StartType == "Enabled"
+      when: StartType == "Disabled"
       shell: |
         systemctl disable -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output Disable
+    - name: Output disable service
       debug:
         var: command_output.stdout_lines
