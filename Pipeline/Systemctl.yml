@@ -9,9 +9,9 @@
       shell:
         systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
         echo выбрано "{{State}}";
-        if [[ "{{State}}" -eq "Start" ]];
+        if [[ "{{State}}" == "Start" ]];
         then systemctl start "{{ServiceName}}"; echo условие start;
-        elif [[ "{{State}}" -eq "Stop" ]];
+        elif [[ "{{State}}" == "Stop" ]];
         then systemctl stop "{{ServiceName}}"; echo условие stop;
         else echo условие none;
         fi;
