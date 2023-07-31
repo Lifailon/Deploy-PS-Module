@@ -33,7 +33,7 @@
     - name: Restart service
       when: State == "Restart"
       shell: |
-        systemctl restart *"{{ServiceName}}"*;
+        systemctl restart -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output Restart
