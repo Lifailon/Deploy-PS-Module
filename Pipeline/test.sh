@@ -1,10 +1,9 @@
 State=Stop;
 ServiceName=cron;
-systemctl status *$ServiceName* | grep -iP "Active:|Loaded:| - ";
-echo выбрано $State;
-if [[ $State -eq "Start" ]];
-then echo условие start; systemctl start $ServiceName;
-elif [[ $State -eq "Stop" ]];
-then echo условие stop; systemctl stop $ServiceName; 
-else echo условие none;
-fi
+echo $State;
+echo $ServiceName;
+systemctl status -a *$ServiceName* | grep -iP "Active:|Loaded:| - ";
+if [[ $State -eq "Start" ]]; then systemctl start $ServiceName; echo "if start";
+elif [[ $State -eq "Stop" ]]; then systemctl stop $ServiceName; echo "if stop";
+else echo "else"; fi
+systemctl status   -a *$ServiceName* | grep -iP "Active:|Loaded:| - ";
