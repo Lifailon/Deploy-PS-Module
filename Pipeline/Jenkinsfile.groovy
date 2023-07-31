@@ -25,7 +25,7 @@ pipeline {
       steps {
         echo "Selected service - $params.ServiceName"
         echo "Selected parameters - State: $params.State and StartType: $params.StartType"
-        sh "ansible-playbook Pipeline/Systemctl.yml -e 'ServiceName=$params.ServiceName State=$params.State' -b"
+        sh "ansible-playbook Pipeline/Systemctl.yml -e 'ServiceName=$params.ServiceName State=$params.State StartType=$params.StartType'' -b"
       }
     }
   }
