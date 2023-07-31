@@ -9,7 +9,7 @@
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
       register: command_output
-    - name: Output
+    - name: Output Status
       debug:
         var: command_output.stdout_lines
     - name: Change service state Linux
@@ -18,7 +18,7 @@
         systemctl start *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output
+    - name: Output Start
       debug:
         var: command_output.stdout_lines
     - name: Change service state Linux
@@ -27,7 +27,7 @@
         systemctl stop *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output
+    - name: Output Stop
       debug:
         var: command_output.stdout_lines
     - name: Change service state Linux
@@ -36,6 +36,6 @@
         systemctl restart *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output
+    - name: Output Restart
       debug:
         var: command_output.stdout_lines
