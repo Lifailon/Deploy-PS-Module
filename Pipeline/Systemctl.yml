@@ -12,7 +12,8 @@
         then systemctl start *"{{ServiceName}}"*;
         elif [[ "{{State}}" -eq "Stop" ]];
         then systemctl stop *"{{ServiceName}}"*;
-        fi
+        fi;
+        systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output
       debug:
