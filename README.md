@@ -14,7 +14,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TD
-    classDef class_color fill:#7FFFD4, stroke:#000, stroke-width:1px
+    classDef class_color fill:#68F1F7, stroke:#000, stroke-width:1px
     1[Jenkins]:::class_color
     2[SCM: GitHub]:::class_color
     3[Jenkins.Groovy passes parameters]:::class_color
