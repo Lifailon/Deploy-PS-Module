@@ -14,12 +14,13 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TD
-    classDef class1 fill:#7FFFD4, stroke:#000, stroke-width:4px
-    A([Jenkins]):::class1
-    B([SCM: GitHub]):::class1
-    C([Jenkins.Groovy])
+    classDef ClassColor fill:#7FFFD4, stroke:#000, stroke-width:4px
+    A[Jenkins]:::ClassColor
+    B[SCM: GitHub]:::ClassColor
+    C[Jenkins.Groovy]::ClassColor
     A--->B
     B--->C
+    C--->A
 ```
 
 ## Work example:
