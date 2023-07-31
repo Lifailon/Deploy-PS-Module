@@ -3,8 +3,8 @@ ServiceName=cron;
 systemctl status *$ServiceName* | grep -iP "Active:|Loaded:| - ";
 echo выбрано $State;
 if [[ $State -eq "Start" ]];
-then sudo systemctl start $ServiceName; echo условие start;
+then echo условие start; systemctl start $ServiceName;
 elif [[ $State -eq "Stop" ]];
-then sudo systemctl stop $ServiceName; echo условие stop;
+then echo условие stop; systemctl stop $ServiceName; 
 else echo условие none;
-fi;
+fi
