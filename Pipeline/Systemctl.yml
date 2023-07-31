@@ -9,7 +9,7 @@
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
       register: command_output
-    - name: Output state
+    - name: Output state service
       debug:
         var: command_output.stdout_lines
     - name: Start service
@@ -17,48 +17,32 @@
       shell: |
         systemctl start -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
-      register: command_output
-    - name: Output start service
-      when: State == "Start"
-      debug:
-        var: command_output.stdout_lines
     - name: Stop service
       when: State == "Stop"
       shell: |
         systemctl stop -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
-      register: command_output
-    - name: Output stop service
-      when: State == "Stop"
-      debug:
-        var: command_output.stdout_lines
     - name: Restart service
       when: State == "Restart"
       shell: |
         systemctl restart -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
-      register: command_output
-    - name: Output restart service
-      when: State == "Restart"
-      debug:
-        var: command_output.stdout_lines
     - name: Enable service to startup
       when: StartType == "Enabled"
       shell: |
         systemctl enable -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
-      register: command_output
-    - name: Output ensable service
-      when: StartType == "Enabled"
-      debug:
-        var: command_output.stdout_lines
     - name: Disable service to startup
       when: StartType == "Disabled"
       shell: |
         systemctl disable -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+    - name: Get service state
+      when: State != "None" or StartType != "None" 
+      shell: |
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
-    - name: Output disable service
-      when: StartType == "Disabled"
+    - name: Output state service finish
+      when: State != "None" or StartType != "None" 
       debug:
         var: command_output.stdout_lines
