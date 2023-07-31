@@ -9,12 +9,12 @@ Jenkins pipeline for service management to Windows and Linux system.
 ```mermaid
 flowchart TD
     classDef class_color fill:#68F1F7, stroke:#000, stroke-width:1px
-    1[Jenkins]:::class_color
+    1[Jenkins Pipeline]:::class_color
     2[SCM: GitHub]:::class_color
     3[Jenkinsfile.Groovy passes parameters]:::class_color
     4[Playbook takes variables]:::class_color
     5[PowerShell/Bash code]:::class_color
-    1--->2--->3--Ansible-->4--Module win_shell/shell-->5
+    1--Connect-->2--Read->3--Run Ansible-->4--Use Module win_shell/shell-->5
     5--Output to Job-->1
 ```
 
