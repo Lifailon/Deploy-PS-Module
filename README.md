@@ -20,7 +20,7 @@ flowchart TD
     3[Jenkins.Groovy passes parameters]:::class_color
     4[Ansible Playbook takes variables]:::class_color
     5[PowerShell/Bash code]:::class_color
-    1--->2--->3--->4--->5
+    1--->2--->3--->4--Module win_shell/shell-->5
     5--Output to Job-->1
 ```
 
