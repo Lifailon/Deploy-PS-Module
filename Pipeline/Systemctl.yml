@@ -7,15 +7,13 @@
   tasks:
     - name: Change service state Linux
       shell:
-        systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
         echo выбрано "{{State}}";
-        if [[ "{{State}}" -eq "Start" ]];
-        then systemctl start *"{{ServiceName}}"*; echo условие start;
-        elif [[ "{{State}}" -eq "Stop" ]];
-        then systemctl stop *"{{ServiceName}}"*; echo условие stop;
+        if [[ "{{State}}" -eq "Start" ]];  then systemctl start *"{{ServiceName}}"*; echo условие start;
+        elif [[ "{{State}}" -eq "Stop" ]]; then systemctl stop  *"{{ServiceName}}"*; echo условие stop;
         else echo условие none;
         fi;
-        systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output
       debug:
