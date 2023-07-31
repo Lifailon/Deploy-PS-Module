@@ -13,8 +13,8 @@ pipeline {
         expression { params.System == 'Windows' }
       }
       steps {
-        echo "Selected service: $params.ServiceName"
-        echo "Selected parameters: State $params.State and StartType $params.StartType"
+        echo "Selected service - $params.ServiceName"
+        echo "Selected parameters - State: $params.State and StartType: $params.StartType"
         sh "ansible-playbook Pipeline/Get-Service.yml -e 'ServiceName=$params.ServiceName State=$params.State StartType=$params.StartType'"
       }
     }
@@ -23,8 +23,8 @@ pipeline {
         expression { params.System == 'Linux' }
       }
       steps {
-        echo "Selected service: $params.ServiceName"
-        echo "Selected parameters: State $params.State and StartType $params.StartType"
+        echo "Selected service - $params.ServiceName"
+        echo "Selected parameters - State: $params.State and StartType: $params.StartType"
         sh "ansible-playbook Pipeline/Systemctl.yml -e 'ServiceName=$params.ServiceName State=$params.State' -b"
       }
     }
