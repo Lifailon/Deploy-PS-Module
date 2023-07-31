@@ -8,11 +8,32 @@
     - name: Get service state
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
-        echo выбрано "{{State}}";
+      register: command_output
+    - name: Output
+      debug:
+        var: command_output.stdout_lines
+    - name: Change service state Linux
+      when: State == "Start"
+      shell: |
+        systemctl start *"{{ServiceName}}"*;
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+      register: command_output
+    - name: Output
+      debug:
+        var: command_output.stdout_lines
     - name: Change service state Linux
       when: State == "Stop"
       shell: |
-        systemctl stop *"{{ServiceName}}"*; echo условие попало под stop;
+        systemctl stop *"{{ServiceName}}"*;
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+      register: command_output
+    - name: Output
+      debug:
+        var: command_output.stdout_lines
+    - name: Change service state Linux
+      when: State == "Restart"
+      shell: |
+        systemctl restart *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output
