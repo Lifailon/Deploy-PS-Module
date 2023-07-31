@@ -18,8 +18,7 @@ flowchart TD
     1[Jenkins]:::class_color
     2[SCM: GitHub]:::class_color
     3[Jenkins.Groovy]:::class_color
-    1--->2
-    2--->3
+    1--->2--->3
     3--->1
 ```
 
