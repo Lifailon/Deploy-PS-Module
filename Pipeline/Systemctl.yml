@@ -33,11 +33,20 @@
       shell: |
         systemctl disable -a "{{ServiceName}}"
     - name: Get service state
-      when: State != "None" or StartType != "None"
+      when: State != "None" and StartType == "None"
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output state service finish
-      when: State != "None" or StartType != "None"
+      when: State != "None" and StartType == "None"
+      debug:
+        var: command_output.stdout_lines
+    - name: Get service state
+      when: StartType != "None"
+      shell: |
+        systemctl status -a "{{ServiceName}}" | grep -iP "Active:|Loaded:| - "
+      register: command_output
+    - name: Output state service finish
+      when: StartType != "None"
       debug:
         var: command_output.stdout_lines
