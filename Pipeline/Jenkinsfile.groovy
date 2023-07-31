@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    string(name: "ServiceName", defaultValue: "sshd", trim: true, description: "Enter a service name. For Windows systems the default is Fildcard format. For Linux use formate *name* (not suppoeted for StartType mode).")
+    string(name: "ServiceName", defaultValue: "ssh", trim: true, description: "Enter a service name. For Windows systems the default is Fildcard format. For Linux use formate *name* (not suppoeted for StartType mode).")
     choice(name: "System", choices: ["Windows","Linux"], description: "Select targeted the operating system.")
     // booleanParam(name: "ChangeState", defaultValue: false)
     choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "None - only get status.")
