@@ -2,10 +2,10 @@ pipeline {
   agent any
   parameters {
     string(name: "ServiceName", defaultValue: "cron", trim: true, description: "Enter the name of the service")
+    choice(name: "System", choices: ["Windows","Linux"], description: "Select the operating system")
     // booleanParam(name: "ChangeState", defaultValue: false)
     choice(name: "State", choices: ["None","Start","Restart","Stop"], description: "None - only get status")
     choice(name: "StartType", choices: ["None","Automatic","AutomaticDelayedStart","Disabled","Manual"], description: "Delayed Start mode supported only PowerShell 7")
-    choice(name: "System", choices: ["Windows","Linux"], description: "Select the operating system")
   }
   stages {
     stage('Powershell via Ansible') {
