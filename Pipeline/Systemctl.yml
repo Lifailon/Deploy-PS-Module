@@ -39,3 +39,21 @@
     - name: Output Restart
       debug:
         var: command_output.stdout_lines
+    - name: Enable service to startup
+      when: StartType == "Enabled"
+      shell: |
+        systemctl enable -a *"{{ServiceName}}"*;
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+      register: command_output
+    - name: Output Ensable
+      debug:
+        var: command_output.stdout_lines
+    - name: Disable service to startup
+      when: StartType == "Enabled"
+      shell: |
+        systemctl disable -a *"{{ServiceName}}"*;
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+      register: command_output
+    - name: Output Disable
+      debug:
+        var: command_output.stdout_lines
