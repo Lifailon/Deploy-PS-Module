@@ -14,7 +14,7 @@ flowchart TD
     3[Jenkinsfile.Groovy passes parameters]:::class_color
     4[Playbook takes variables]:::class_color
     5[PowerShell/Bash code]:::class_color
-    1--Connect-->2--Read->3--Run Ansible-->4--Use Module win_shell/shell-->5
+    1--Connect-->2--Read-->3--Run Ansible-->4--Use module win_shell/shell-->5
     5--Output to Job-->1
 ```
 
