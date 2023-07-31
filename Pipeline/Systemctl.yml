@@ -9,11 +9,11 @@
       shell:
         systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
         echo выбрано "{{State}}";
-        if [[ "{{State}}" == "Start" ]];
-        then systemctl start *"{{ServiceName}}"*; echo echo start;
-        elif [[ "{{State}}" == "Stop" ]];
-        then systemctl stop *"{{ServiceName}}"*; echo echo stop;
-        else echo echo none;
+        if [[ "{{State}}" -match "Start" ]];
+        then systemctl start *"{{ServiceName}}"*; echo условие start;
+        elif [[ "{{State}}" -match "Stop" ]];
+        then systemctl stop *"{{ServiceName}}"*; echo условие stop;
+        else echo условие none;
         fi;
         systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
