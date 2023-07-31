@@ -8,10 +8,10 @@
     - name: Change service state Linux
       shell:
         systemctl status *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
-        if [[ "{{State}}" -eq "Start" ]]
-        then systemctl start *"{{ServiceName}}"
-        elif [[ "{{State}}" -eq "Stop" ]]
-        then systemctl stop *"{{ServiceName}}"
+        if [[ "{{State}}" -eq "Start" ]];
+        then systemctl start *"{{ServiceName}}";
+        elif [[ "{{State}}" -eq "Stop" ]];
+        then systemctl stop *"{{ServiceName}}";
         fi
       register: command_output
     - name: Output
