@@ -24,9 +24,9 @@ flowchart TD
 
 ## Job
 
-![Image alt](https://github.com/Lifailon/pSyslog/blob/rsa/Screen/Build-Parameters.jpg)
+![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Build-Parameters.jpg)
 
-![Image alt](https://github.com/Lifailon/pSyslog/blob/rsa/Screen/Stage-View.jpg)
+![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Stage-View.jpg)
 
 ## Example output
 
