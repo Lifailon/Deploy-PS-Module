@@ -2,7 +2,11 @@
 
 Jenkins pipeline for service management to Windows and Linux system.
 
-**Stack:** Jenkins, SCM (GitHub), Ansible (tested v2.10.8) and module win_shell (from the collection ansible.windows), PowerShell/Bash.
+**Stack:** 
+- Jenkins (tested v2.416)
+- Service Control Manager (use GitHub)
+- Ansible (tested v2.10.8) and module win_shell (from the collection ansible.windows)
+- Executable code: PowerShell/Bash.
 
 ## Scheme of work:
 
