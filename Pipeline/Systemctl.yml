@@ -31,11 +31,11 @@
     - name: Disable service to startup
       when: StartType == "Disabled"
       shell: |
-        systemctl disable -a *"{{ServiceName}}"*
+        systemctl disable -a "{{ServiceName}}"
     - name: Get service state
       when: State != "None" or StartType != "None"
       shell: |
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl status -a "{{ServiceName}}" | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output state service finish
       when: State != "None" or StartType != "None"
