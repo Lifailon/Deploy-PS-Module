@@ -21,7 +21,7 @@ flowchart TD
     4[Playbook takes variables]:::class_color
     5[PowerShell/Bash code]:::class_color
     1--->2--->3--Ansible-->4--Module win_shell/shell-->5
-    3--->3
+    3--->2
     5--Output to Job-->1
 ```
 
