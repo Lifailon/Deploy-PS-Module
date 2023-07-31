@@ -5,14 +5,14 @@
     StartType: None
   hosts: us
   tasks:
-    - name: Change service state Linux
+    - name: Get service state
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
         echo выбрано "{{State}}";
-        if [ "Stop" == "Stop" ]; then echo DA DA DA; fi;
-        if [[ "{{ State }}" -eq "Start" ]]; then systemctl start *"{{ServiceName}}"*; echo условие попало под start; fi;
-        if [[ "{{ State }}" -eq "Stop" ]]; then systemctl stop *"{{ServiceName}}"*; echo условие попало под stop; fi;
-        if [[ "{{ State }}" -eq "Restart" ]]; then systemctl restart *"{{ServiceName}}"*; echo условие попало под restart; fi;
+    - name: Change service state Linux
+      when: State == "Stop"
+      shell: |
+        systemctl stop *"{{ServiceName}}"*; echo условие попало под stop;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output
