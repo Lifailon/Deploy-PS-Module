@@ -7,7 +7,7 @@
   tasks:
     - name: Get service state Linux
       shell: |
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
+        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output state service
       debug:
@@ -15,34 +15,29 @@
     - name: Start service
       when: State == "Start"
       shell: |
-        systemctl start -a *"{{ServiceName}}"*;
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl start -a *"{{ServiceName}}"*
     - name: Stop service
       when: State == "Stop"
       shell: |
-        systemctl stop -a *"{{ServiceName}}"*;
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl stop -a *"{{ServiceName}}"*
     - name: Restart service
       when: State == "Restart"
       shell: |
-        systemctl restart -a *"{{ServiceName}}"*;
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl restart -a *"{{ServiceName}}"*
     - name: Enable service to startup
       when: StartType == "Enabled"
       shell: |
-        systemctl enable -a *"{{ServiceName}}"*;
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl enable -a *"{{ServiceName}}"*
     - name: Disable service to startup
       when: StartType == "Disabled"
       shell: |
-        systemctl disable -a *"{{ServiceName}}"*;
-        systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
+        systemctl disable -a *"{{ServiceName}}"*
     - name: Get service state
-      when: State != "None" or StartType != "None" 
+      when: State != "None" or StartType != "None"
       shell: |
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output state service finish
-      when: State != "None" or StartType != "None" 
+      when: State != "None" or StartType != "None"
       debug:
         var: command_output.stdout_lines
