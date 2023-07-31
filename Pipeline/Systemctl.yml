@@ -9,10 +9,8 @@
       shell:
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - ";
         echo выбрано "{{State}}";
-        if [[ {{State}} -eq "Start" ]];  then systemctl start *"{{ServiceName}}"*; echo условие start;
-        elif [[ {{State}} -eq "Stop" ]]; then systemctl stop  *"{{ServiceName}}"*; echo условие stop;
-        else echo условие none;
-        fi;
+        if [[ {{State}} == "Start" ]];  then systemctl start *"{{ServiceName}}"*; echo условие start; fi;
+        if [[ {{State}} == "Stop" ]]; then systemctl stop  *"{{ServiceName}}"*; echo условие stop; fi;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output
