@@ -17,11 +17,10 @@ flowchart TD
     classDef class_color fill:#68F1F7, stroke:#000, stroke-width:1px
     1[Jenkins]:::class_color
     2[SCM: GitHub]:::class_color
-    3[Jenkins.Groovy passes parameters]:::class_color
+    3[Jenkinsfile.Groovy passes parameters]:::class_color
     4[Playbook takes variables]:::class_color
     5[PowerShell/Bash code]:::class_color
     1--->2--->3--Ansible-->4--Module win_shell/shell-->5
-    3--->2
     5--Output to Job-->1
 ```
 
