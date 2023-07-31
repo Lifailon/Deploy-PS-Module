@@ -12,6 +12,16 @@ stateDiagram-v2
     PowerShell/Bash --> Jenkins: Output to Job
 ```
 
+```mermaid
+flowchart TD
+    classDef class1 fill:#7FFFD4, stroke:#000, stroke-width:4px
+    A([Jenkins]):::class1
+    B([SCM: GitHub]):::class1
+    C([Jenkins.Groovy])
+    A--->B
+    B--->C
+```
+
 ## Work example:
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/1-Stage-Status.jpg" width="400"/></a>
