@@ -21,7 +21,7 @@ flowchart TD
     4[Ansible Playbook takes variables]:::class_color
     5[PowerShell/Bash code]:::class_color
     1--->2--->3--->4--->5
-    5--Output-->1
+    5--Output to Job-->1
 ```
 
 ## Work example:
