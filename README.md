@@ -8,7 +8,7 @@ Jenkins pipeline for service management to Windows and Linux system.
 - **Ansible** (tested v2.10.8). Use module win_shell (from the collection ansible.windows) and shell.
 - Executable code: **PowerShell/systemctl**.
 
-## Scheme of work:
+## Scheme of work
 
 ```mermaid
 flowchart TD
@@ -22,13 +22,13 @@ flowchart TD
     5--Output to Job-->1
 ```
 
-## Job:
+## Job
 
 ![Image alt](https://github.com/Lifailon/pSyslog/blob/rsa/Screen/Build-Parameters.jpg)
 
 ![Image alt](https://github.com/Lifailon/pSyslog/blob/rsa/Screen/Stage-View.jpg)
 
-## Output:
+## Example output
 
-<a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Linux.jpg" width="400"/></a>
+<a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg" width="400"/></a>
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Linux.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Linux.jpg" width="400"/></a>
