@@ -19,6 +19,7 @@
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output start service
+      when: State == "Start"
       debug:
         var: command_output.stdout_lines
     - name: Stop service
@@ -28,6 +29,7 @@
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output stop service
+      when: State == "Stop"
       debug:
         var: command_output.stdout_lines
     - name: Restart service
@@ -37,6 +39,7 @@
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output restart service
+      when: State == "Restart"
       debug:
         var: command_output.stdout_lines
     - name: Enable service to startup
@@ -46,6 +49,7 @@
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output ensable service
+      when: StartType == "Enabled"
       debug:
         var: command_output.stdout_lines
     - name: Disable service to startup
@@ -55,5 +59,6 @@
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output disable service
+      when: StartType == "Disabled"
       debug:
         var: command_output.stdout_lines
