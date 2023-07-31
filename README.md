@@ -17,9 +17,10 @@ flowchart TD
     classDef class1 fill:#7FFFD4, stroke:#000, stroke-width:4px
     A[Jenkins]:::class1
     B[SCM: GitHub]:::class1
-    C[Jenkins.Groovy]
+    C[Jenkins.Groovy]:::class1
     A--->B
     B--->C
+    C--->B
 ```
 
 ## Work example:
