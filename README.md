@@ -20,7 +20,6 @@ flowchart TD
     C[Jenkins.Groovy]::ClassColor
     A--->B
     B--->C
-    C--->A
 ```
 
 ## Work example:
