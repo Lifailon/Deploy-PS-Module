@@ -15,7 +15,7 @@
     - name: Start service
       when: State == "Start"
       shell: |
-        systemctl start *"{{ServiceName}}"*;
+        systemctl start -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output Start
@@ -24,7 +24,7 @@
     - name: Stop service
       when: State == "Stop"
       shell: |
-        systemctl stop *"{{ServiceName}}"*;
+        systemctl stop -a *"{{ServiceName}}"*;
         systemctl status -a *"{{ServiceName}}"* | grep -iP "Active:|Loaded:| - "
       register: command_output
     - name: Output Stop
