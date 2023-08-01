@@ -35,10 +35,6 @@ flowchart TD
 
 ### Settings Git
 
-Use the current **public repository** for your pipeline.
-
-<!---
-Hosts list and variables for playbook are used on the local Ansible server.
---->
+Use the current **public repository** for your pipeline. Hosts list and variables for playbook are used on the local Ansible server.
 
 ![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Settings-Git.jpg)
