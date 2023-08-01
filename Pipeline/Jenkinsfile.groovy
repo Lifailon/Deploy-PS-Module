@@ -8,6 +8,11 @@ pipeline {
     choice(name: "StartType", choices: ["None","Enabled","Manual","Automatic","AutomaticDelayedStart","Disabled"], description: "Enabled mode - for system Linux. Automatic/Manual mode - for system Windows. Delayed Start mode - supported only to PowerShell 7.")
   }
   stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'rsa', url: "https://github.com/Lifailon/Pipeline-Service-Manager.git" // credentialsId: 'github_key'
+      }
+    }
     stage('Powershell via Ansible') {
       when {
         expression { params.System == 'Windows' }
