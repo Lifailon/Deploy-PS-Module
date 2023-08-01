@@ -32,3 +32,9 @@ flowchart TD
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg" width="400"/></a>
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Linux.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Linux.jpg" width="400"/></a>
+
+### Settings Git
+
+Use the current **public repository** for your pipeline.
+
+![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Settings-Git.jpg)
