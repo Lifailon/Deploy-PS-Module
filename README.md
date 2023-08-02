@@ -24,8 +24,6 @@ flowchart TD
 
 ## Job
 
-![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Build-Parameters.jpg)
-
 ![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Stage-View.jpg)
 
 ## Parameters
@@ -34,6 +32,8 @@ flowchart TD
 **System**: Windows/Linux
 **State**: Start/Stop/Restart
 **StartType**: Enabled mode - for system Linux. Automatic/Manual mode - for system Windows. Delayed Start mode - supported only to PowerShell 7.
+
+![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Build-Parameters.jpg)
 
 ## Output
 
