@@ -22,7 +22,7 @@ flowchart TD
     5--Output to Job-->1
 ```
 
-## Job
+## Job stages
 
 ![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Stage-View.jpg)
 
