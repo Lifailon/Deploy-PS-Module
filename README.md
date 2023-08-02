@@ -28,6 +28,13 @@ flowchart TD
 
 ![Image alt](https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Stage-View.jpg)
 
+## Parameters
+
+**ServiceName**. For Windows systems the default is Fildcard format. For Linux use formate *name* (not supported for StartType mode). \
+**System**: Windows/Linux
+**State**: Start/Stop/Restart
+**StartType**: Enabled mode - for system Linux. Automatic/Manual mode - for system Windows. Delayed Start mode - supported only to PowerShell 7.
+
 ## Output
 
 <a href="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg"><img src="https://github.com/Lifailon/Pipeline-Service-Manager/blob/rsa/Screen/Windows.jpg" width="400"/></a>
